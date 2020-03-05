@@ -11,6 +11,6 @@ def artistIndex(request):
 def artistpage(request, first_name, last_name):
     artistObject = Artist.objects.filter(first_name=first_name, last_name=last_name)
     print(artistObject.values())
-    return HttpResponse(artistObject)
+    return HttpResponse(artistObject) 
 
 # Create your views here.
