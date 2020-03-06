@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="card-columns">
+        {% for artist in artists %}
+        <div class="card">
+            <img class="card-img-top" src="{{artist.profile_picture}}" alt="img">
+            <div class="card-body">
+                {{artist}}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content%}

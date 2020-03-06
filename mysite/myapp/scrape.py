@@ -25,6 +25,3 @@ def extractLinks(shared_data):
 
 def getProfilePicture(shared_data):
     return shared_data['entry_data']['ProfilePage'][0]['graphql']['user']['profile_pic_url_hd']
-
-shared_data = get_shared_data('tattooinkspiration')
-print(getProfilePicture(shared_data))
