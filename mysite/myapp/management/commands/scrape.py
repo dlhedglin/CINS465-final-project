@@ -38,8 +38,10 @@ class Command(BaseCommand):
                 tempArtist = i
                 shared_data = get_shared_data(instagram_name)
                 image_links = extractLinks(shared_data)
+                if len(image_links) == 0:
+                    return
+                Picture.objects.filter(artist=i).delete()
                 for i in image_links:
-                    print(len(i))
                     p = Picture(picture_url=i, artist=tempArtist)
                     p.save()
                 self.stdout.write(self.style.SUCCESS('Successfully collected images for "%s"' % instagram_name))
