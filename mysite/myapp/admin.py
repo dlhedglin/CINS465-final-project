@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Artist, Picture
+from .models import Picture, static_image
 # Register your models here.
 
-admin.site.register(Artist)
 admin.site.register(Picture)
+admin.site.register(static_image)

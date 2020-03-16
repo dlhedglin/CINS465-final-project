@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class="card-columns">
+        {% for user in users %}
+        <div class="card">
+            {% load static %}
+            <img class="card-img-top" src="{{ user.profile_picture.url }}" alt="img">
+            <div class="card-body">
+                {{user}}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="card-columns">
+        {% for img in static_images %}
+        <div class="card">
+            {% load static %}
+            <img class="card-img-top" src="{{ img.img.url }}" alt="img">
+        </div>
+        {% endfor %}
+    </div>
+    <div class="card-columns">
+        {% for img in insta_images %}
+        <div class="card">
+            {% load static %}
+            <img class="card-img-top" src="{{ img.picture_url }}" alt="img">
+        </div>
+        {% endfor %}
+    </div>
+    {% if user.is_authenticated and user_id == user.id %}
+    <form action="/upload_image/" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            {% csrf_token %}
+            {{ form }}
+        </div>
+        <div class=form-group>
+            <input type="submit" class="btn btn-primary" value="Submit" id="submit_post">
+        </div>
+    </form>
+    {% endif %}
+</div>
+
+{% endblock content%}

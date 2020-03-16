@@ -4,13 +4,14 @@
     <div class="card-columns">
         {% for artist in artists %}
         <div class="card">
-            <img class="card-img-top" src="{{artist.profile_picture}}" alt="img">
-            <div class="card-body">
-                {{artist}}
-            </div>
-            {% endfor %}
+            <a href="artists/{{artist.id}}" class="btn-fix text-left">
+                <img class="card-img-top" src="media/{{artist.profile_picture}}" alt="img">
+                <div class="card-body">
+                    {{artist}}
+                </div>
+            </a>
         </div>
+        {% endfor %}
     </div>
 </div>
-
 {% endblock content%}

@@ -1,6 +1,7 @@
 # https://docs.djangoproject.com/en/1.11/howto/custom-management-commands/
 from django.core.management.base import BaseCommand, CommandError
-from myapp.models import Artist, Picture
+from myapp.models import Picture
+from custom_user.models import MyUser
 import requests
 import json
 
@@ -32,11 +33,11 @@ def getProfilePicture(shared_data):
 class Command(BaseCommand):
     help = 'Collects pictures from artists instagram accounts'
     def handle(self, *args, **options):
-        artists = Artist.objects.all()
+        artists = MyUser.objects.all()
         if(len(artists) == 0):
             return
         for i in artists:
-            instagram_name = i.insta_name
+            instagram_name = i.instagram_name
             if(instagram_name != ''):
                 tempArtist = i
                 shared_data = get_shared_data(instagram_name)
