@@ -4,6 +4,7 @@ from myapp.models import Picture, static_image
 from custom_user.admin import UserCreationForm
 from custom_user.models import MyUser
 from .forms import UploadFileForm, ImageForm
+from django.contrib.auth import authenticate, login, logout
 
 def index(request):
     if request.method == "POST":
@@ -42,4 +43,21 @@ def upload_image(request):
             form.save(request)
     return redirect('/artists/' + str(request.user.id))
 
-# Create your views here.
+def logout_user(request):
+    logout(request)
+    return redirect('/')
+
+
+def login_user(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        # Redirect to a success page.
+        ...
+    else:
+        # Return an 'invalid login' error message.
+        ...
+    return
+

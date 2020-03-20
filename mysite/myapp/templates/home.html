@@ -1,17 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
+
+<header class="masthead" style="background-image: url('media/images/gradient.png')">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center">
+      <div class="col-12 text-center">
+        <h1 class="font-weight-light">12 Volt Tattoo</h1>
+        <p class="lead">194 E 8th St. Chico, CA 95928</p>
+        <p class="lead">530-592-3074</p>
+      </div>
+    </div>
+  </div>
+</header>
 <div class="container">
-    <div class="card-columns">
+    <div class="row">
         {% for artist in artists %}
-        <div class="card">
-            <a href="artists/{{artist.id}}" class="btn-fix text-left">
-                <img class="card-img-top" src="media/{{artist.profile_picture}}" alt="img">
-                <div class="card-body">
-                    {{artist}}
+        <!-- Team Member 1 -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-0 shadow">
+                <img src="{{artist.profile_picture.url}}" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title mb-0">{{artist.first_name}} {{artist.last_name}}</h5>
+                    <hr class="my-4">
+                    <a class="btn btn-primary btn-block" href="artists/{{artist.id}}">View</a>
                 </div>
-            </a>
+            </div>
         </div>
         {% endfor %}
     </div>
 </div>
-{% endblock content%}
+{% endblock content %}

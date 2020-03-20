@@ -41,9 +41,9 @@ class Command(BaseCommand):
             if(instagram_name != ''):
                 tempArtist = i
                 shared_data = get_shared_data(instagram_name)
-                profile_pic = getProfilePicture(shared_data)
-                tempArtist.profile_picture = profile_pic
-                tempArtist.save()
+                # profile_pic = getProfilePicture(shared_data)
+                # tempArtist.profile_picture = profile_pic
+                # tempArtist.save()
                 image_links = extractLinks(shared_data)
                 if len(image_links) == 0:
                     return

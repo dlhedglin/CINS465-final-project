@@ -25,7 +25,7 @@ SECRET_KEY = '02qwg&fra)@vdysxk7!r*bidml&swtklh&p%1@%dw$a7m(=d-t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', '192.168.1.12', '127.0.0.1']
 
 
 # Application definition
@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'custom_user',
+    'django_cleanup',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -126,3 +128,5 @@ AUTH_USER_MODEL = 'custom_user.MyUser'
 
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
