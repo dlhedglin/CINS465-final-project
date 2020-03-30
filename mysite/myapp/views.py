@@ -23,12 +23,12 @@ def index(request):
     return render(request, 'home.html', context=data)
     
 def artistpage(request, user_id):
-    artistObject = MyUser.objects.filter(id=user_id)
-    static_images = static_image.objects.filter(artist=artistObject[0])
-    insta_images = Picture.objects.filter(artist=artistObject[0])
+    artistObject = MyUser.objects.filter(id=user_id)[0]
+    static_images = static_image.objects.filter(artist=artistObject)
+    insta_images = Picture.objects.filter(artist=artistObject)
     form = ImageForm
     data = {
-        'users': artistObject,
+        'artist': artistObject,
         'form': form,
         'static_images': static_images,
         'insta_images': insta_images,
@@ -37,11 +37,27 @@ def artistpage(request, user_id):
     return render(request, 'artistpage.html', context=data)
 
 def upload_image(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and request.user.is_authenticated:
         form = ImageForm(request.POST, request.FILES)
         if form.is_valid():
             form.save(request)
+    else:
+        return redirect('/login')
     return redirect('/artists/' + str(request.user.id))
+
+def remove_image(request, image_id):
+    if request.user.is_authenticated:
+        foundImage = static_image.objects.filter(id=image_id)
+        if foundImage:
+            if foundImage.values()[0]['artist_id'] == request.user.id:
+                foundImage.delete()
+                return redirect('/artists/' + str(request.user.id))
+            else:
+                return HttpResponse('You cannot remove another users image')
+    else:
+        return redirect('/')
+
+
 
 def logout_user(request):
     logout(request)
