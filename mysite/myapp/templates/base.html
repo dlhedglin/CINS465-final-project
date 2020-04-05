@@ -10,10 +10,19 @@
     <meta name="viewport" content="width=device-width, inital-scale=1, shrink-to-fit=no">
     {% load static %}
     <link rel="shortcut icon" type="image/png" href="{% static "favicon.png" %}" />
+    <link href="https://fonts.googleapis.com/css2?family=B612&display=swap" rel="stylesheet"> 
     <style>
+    {% comment %} font-family: 'B612', sans-serif; {% endcomment %}
 
         {% comment %} https: //startbootstrap.com/snippets/full-image-header/ {% endcomment %}
+        body {
+            font-family: 'B612', sans-serif;
+            background: #F2F3F5;
+        }
+        .navbar {
+            background: #F2F3F5;
 
+        }
         .masthead {
             height: 100vh;
             min-height: 500px;
@@ -56,11 +65,15 @@
             background: #125688;
             color: white;
         }
+        .fa-envelope {
+  background: #dd4b39;
+  color: white;
+}
     </style>
 </head>
 
 <body>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light">
         <a class="navbar-brand" href="/">
             <img src="{% static "favicon.png" %}" width="30" height="30" class="d-inline-block align-top" alt="">
             12 Volt Tattoo
