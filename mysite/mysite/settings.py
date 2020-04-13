@@ -84,6 +84,16 @@ DATABASES = {
     }
 }
 
+# Backend Email
+# https://hellowebbooks.com/news/tutorial-setting-up-a-contact-form-with-django/
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'tattootestemail@gmail.com'
+EMAIL_HOST_PASSWORD = 'Cins446!'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators

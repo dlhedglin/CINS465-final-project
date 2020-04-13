@@ -16,3 +16,11 @@ class ImageForm(forms.ModelForm):
         image_instace.artist = request.user
         image_instace.save()
         return image_instace
+
+class ContactForm(forms.Form):
+    contact_name = forms.CharField(required=True)
+    contact_email = forms.EmailField(required = True)
+    content = forms.CharField(
+        required = True,
+        widget = forms.Textarea
+    )

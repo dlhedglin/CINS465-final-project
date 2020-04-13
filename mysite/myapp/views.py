@@ -3,8 +3,11 @@ from django.http import HttpResponse
 from myapp.models import Picture, static_image
 from custom_user.admin import UserCreationForm
 from custom_user.models import MyUser
-from .forms import UploadFileForm, ImageForm
+from .forms import UploadFileForm, ImageForm, ContactForm
 from django.contrib.auth import authenticate, login, logout
+from django.core.mail import EmailMessage, send_mail
+from django.template.loader import get_template
+from django.conf import settings
 
 def index(request):
     if request.method == "POST":
@@ -21,6 +24,46 @@ def index(request):
         'form': form,
     }
     return render(request, 'home.html', context=data)
+
+def contact(request):
+    form_class = ContactForm
+    
+    if request.method == 'POST':
+        form = form_class(data=request.POST)
+
+        if form.is_valid():
+            contact_name = request.POST.get(
+                'contact_name',
+                ''
+            )
+            contact_email = request.POST.get(
+                'contact_email',
+                ''
+            )
+            form_content = request.POST.get('content', '')
+
+            template = get_template('contact_template.txt')
+            context = {
+                'contact_name': contact_name,
+                'contact_email': contact_email,
+                'form_content': form_content,
+            }
+            content = template.render(context)
+            email_from = settings.EMAIL_HOST_USER
+
+            send_mail(
+                "Consolation Appointment",
+                content,
+                email_from,
+                ['tattootestemail@gmail.com'],
+                # headers = {'Reply-To': contact_email},
+            )            
+
+            return redirect('contact')
+
+    return render(request, 'contactus.html',{
+        'form':form_class,
+    })    
     
 def artistpage(request, user_id):
     artistObject = MyUser.objects.filter(id=user_id)[0]
