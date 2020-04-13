@@ -4,8 +4,9 @@
 <h1>Contact Page</h1>
 <form role="form" action="" method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">
+    {% load crispy_forms_tags %}
+    {{ form | crispy }}
+    <button class="btn btn-primary" type="submit">
         Submit
     </button>
 </form>
