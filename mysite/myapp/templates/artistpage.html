@@ -1,14 +1,41 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container text-center">
+    {% if artist.profile_picture %}
     <img class="thumb-img shadow" src={{ artist.profile_picture.url }}>
-    <h1 class="text-center">{{ artist.first_name }} {{artist.last_name}} </h1>
-    <div class="card-columns">
+    {% endif %}
+    <h1 class="text-center text-uppercase">{{ artist.first_name }} {{artist.last_name}} </h1>
+    <div class="row justify-content-center py-4">
+        <div class="col-4">
+            <a href="https://www.instagram.com/{{ artist.instagram_name }}" class="fa fa-instagram shadow btn"></a>
+        </div>
+        <div class="col-4">
+            <a href="#" class="fa fa-envelope shadow btn"></a>
+        </div>
+    </div>
+    {% if user.is_authenticated and user_id == user.id %}
+    {% load crispy_forms_tags %}
+    <div class="card text-center">
+        <div class="card-header">
+            Upload Image
+        </div>
+        <div class="card-body"> 
+        <form action="/upload_image/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form | crispy }}
+            <input type="submit" class="btn btn-primary" value="Submit" id="submit_post">
+            </form>
+        </div>
+    </div>
+    {% endif %}
+    <div class="card-columns py-5">
         {% for img in static_images %}
         <div class="card shadow border-0">
+            {% if user.is_authenticated and user_id == user.id %}
             <a class="close" href="/remove_image/{{ img.id }}">
                 <span aria-hidden="true">&times;</span>
             </a>
+            {% endif %}
             <img class="card-img-top" src="{{ img.img.url }}" alt="img">
         </div>
         {% endfor %}
@@ -20,18 +47,6 @@
         </div>
         {% endfor %}
     </div>
-    {% if user.is_authenticated and user_id == user.id %}
-    {% load crispy_forms_tags %}
-    <form action="/upload_image/" method="post" enctype="multipart/form-data">
-        <div class="form-group">
-            {% csrf_token %}
-            {{ form|crispy }}
-        </div>
-        <div class=form-group>
-            <input type="submit" class="btn btn-primary" value="Submit" id="submit_post">
-        </div>
-    </form>
-    {% endif %}
 </div>
 
 {% endblock content%}
