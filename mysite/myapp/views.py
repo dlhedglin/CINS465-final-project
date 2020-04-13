@@ -76,4 +76,3 @@ def login_user(request):
         # Return an 'invalid login' error message.
         ...
     return
-
