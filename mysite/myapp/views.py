@@ -40,10 +40,15 @@ def contact(request):
                 'contact_email',
                 ''
             )
+            contact_artist = request.POSR.get(
+                'contact_artist',
+                ''
+            )
             form_content = request.POST.get('content', '')
 
             template = get_template('contact_template.txt')
             context = {
+                'contact_artist': contact_artist,
                 'contact_name': contact_name,
                 'contact_email': contact_email,
                 'form_content': form_content,
@@ -55,7 +60,8 @@ def contact(request):
                 "Consolation Appointment",
                 content,
                 email_from,
-                ['tattootestemail@gmail.com'],
+                [contact_artist],
+                # Changed the email section to artist was this 'tattootestemail@gmail.com'
                 # headers = {'Reply-To': contact_email},
             )            
 

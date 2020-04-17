@@ -1,6 +1,7 @@
 from django import forms
 from .models import *
 from . import models
+from custom_user import models
 
 class UploadFileForm(forms.Form):
     title = forms.CharField(max_length=50)
@@ -18,6 +19,8 @@ class ImageForm(forms.ModelForm):
         return image_instace
 
 class ContactForm(forms.Form):
+
+    contact_artist = forms.ChoiceField(choices = MyUser.objects.all(),required=True)
     contact_name = forms.CharField(required=True)
     contact_email = forms.EmailField(required = True)
     content = forms.CharField(
