@@ -40,7 +40,7 @@ def contact(request):
                 'contact_email',
                 ''
             )
-            contact_artist = request.POSR.get(
+            contact_artist = request.POST.get(
                 'contact_artist',
                 ''
             )
@@ -60,7 +60,7 @@ def contact(request):
                 "Consolation Appointment",
                 content,
                 email_from,
-                [contact_artist],
+                ['tattootestemail@gmail.com'],
                 # Changed the email section to artist was this 'tattootestemail@gmail.com'
                 # headers = {'Reply-To': contact_email},
             )            

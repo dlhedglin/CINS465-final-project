@@ -20,7 +20,7 @@ class ImageForm(forms.ModelForm):
 
 class ContactForm(forms.Form):
 
-    contact_artist = forms.ChoiceField(choices = MyUser.objects.all(),required=True)
+    contact_artist = forms.ModelChoiceField(queryset = MyUser.objects.all(),required=True)
     contact_name = forms.CharField(required=True)
     contact_email = forms.EmailField(required = True)
     content = forms.CharField(
