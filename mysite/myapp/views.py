@@ -10,18 +10,9 @@ from django.template.loader import get_template
 from django.conf import settings
 
 def index(request):
-    if request.method == "POST":
-        form = ImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            form = ImageForm
-    else:
-        form = ImageForm
     artists = MyUser.objects.all()
-
     data = {
         'artists': artists,
-        'form': form,
     }
     return render(request, 'home.html', context=data)
 
