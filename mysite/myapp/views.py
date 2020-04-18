@@ -16,14 +16,12 @@ def index(request):
     }
     return render(request, 'home.html', context=data)
 
-def contact(request):
+def contact(request, userId = ''):
     form_class = ContactForm
-    
     if request.method == 'POST':
         form = form_class(data=request.POST)
-
         if form.is_valid():
-            
+
             contact_name = request.POST.get(
                 'contact_name',
                 ''
@@ -62,11 +60,19 @@ def contact(request):
                 # Changed the email section to artist was this 'tattootestemail@gmail.com'
                 # headers = {'Reply-To': contact_email},
             )            
-
             return redirect('contact')
-
-    return render(request, 'contactus.html',{
-        'form':form_class,
+    else:
+        if userId != '':
+            artist = MyUser.objects.filter(id=userId)
+            if len(artist) != 0:
+                artist = artist[0]
+                form = ContactForm(initial={'contact_artist': artist})
+            else:
+                form = ContactForm
+        else:
+            form = ContactForm
+        return render(request, 'contactus.html',{
+            'form':form,
     })    
     
 def artistpage(request, user_id):

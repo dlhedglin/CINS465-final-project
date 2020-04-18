@@ -11,7 +11,8 @@ urlpatterns = [
     path('upload_image/', views.upload_image),
     path('login/', auth_views.LoginView.as_view(), {'next_page': '/'}),
     path('logout/', views.logout_user),
-    path('Contact/', views.contact, name='contact'),
+    path('contact/', views.contact, name='contact'),
+    path('contact/<int:userId>', views.contact),
     path('remove_image/<int:image_id>', views.remove_image)
 ]+ static(
     settings.MEDIA_URL,

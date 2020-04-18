@@ -10,7 +10,7 @@
             <a href="https://www.instagram.com/{{ artist.instagram_name }}" class="fa fa-instagram shadow btn"></a>
         </div>
         <div class="col-4">
-            <a href="#" class="fa fa-envelope shadow btn"></a>
+            <a href="/contact/{{ artist.id }}" class="fa fa-envelope shadow btn"></a>
         </div>
     </div>
     {% if user.is_authenticated and user_id == user.id %}
