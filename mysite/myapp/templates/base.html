@@ -10,18 +10,16 @@
     <meta name="viewport" content="width=device-width, inital-scale=1, shrink-to-fit=no">
     {% load static %}
     <link rel="shortcut icon" type="image/png" href="{% static "favicon.png" %}" />
-    <link href="https://fonts.googleapis.com/css2?family=B612&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet"> 
     <style>
-    /* {% comment %} font-family: 'B612', sans-serif; {% endcomment %} */
-
         /* {% comment %} https: //startbootstrap.com/snippets/full-image-header/ {% endcomment %} */
         body {
-            font-family: 'B612', sans-serif;
+            font-family: 'Roboto', sans-serif;
             background: #fff;
+            {% comment %} style="background-color: #cf4c4d" {% endcomment %}
         }
         .navbar {
-            background: #F2F3F5;
-
+            background: #fff;
         }
         .masthead {
             height: 100vh;
@@ -69,21 +67,14 @@
             background: #dd4b39;
             color: white;
         }
-        {% comment %} .navbar-brand.abs{
-            position: absolute;
-            text-align :center;
-            left: 0;
-        } {% endcomment %}
-        {% comment %} .navbar {
-            height: 100px;
-        } {% endcomment %}
     </style>
 </head>
 
-<body style="background-color: #cf4c4d">
+<body>
     <nav class="navbar sticky-top navbar-expand-lg navbar-light text-center">
         <a class="navbar-brand abs text-center" href="/">
-            <img src="{% static "favicon.png" %}" width="65" height="65" class="d-inline-block align-top" alt="">
+            <img src="{% static "favicon.png" %}" width="30" height="30" class="d-inline-block align-top" alt="">
+            12 Volt Tattoo
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

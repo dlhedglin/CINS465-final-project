@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="container text-center">
+<div class="container-fluid text-center" style="background-color: #cf4c4d">
+<div class="container" style="background-color: #cf4c4d">
     {% if artist.profile_picture %}
     <img class="thumb-img shadow" src={{ artist.profile_picture.url }}>
     {% endif %}
@@ -47,6 +48,7 @@
         </div>
         {% endfor %}
     </div>
+</div>
 </div>
 
 {% endblock content%}
