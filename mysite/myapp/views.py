@@ -44,8 +44,14 @@ def contact(request):
                 'contact_artist',
                 ''
             )
+            
             form_content = request.POST.get('content', '')
-
+            
+            artist = MyUser.objects.all()
+            for obj in artist:               
+                if str(obj.pk) == contact_artist:
+                    artist_email = obj.email
+            
             template = get_template('contact_template.txt')
             context = {
                 'contact_artist': contact_artist,
@@ -60,7 +66,7 @@ def contact(request):
                 "Consolation Appointment",
                 content,
                 email_from,
-                ['tattootestemail@gmail.com'],
+                [artist_email],
                 # Changed the email section to artist was this 'tattootestemail@gmail.com'
                 # headers = {'Reply-To': contact_email},
             )            
