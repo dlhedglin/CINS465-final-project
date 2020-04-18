@@ -17,7 +17,7 @@
         /* {% comment %} https: //startbootstrap.com/snippets/full-image-header/ {% endcomment %} */
         body {
             font-family: 'B612', sans-serif;
-            background: #F2F3F5;
+            background: #fff;
         }
         .navbar {
             background: #F2F3F5;
@@ -69,19 +69,18 @@
             background: #dd4b39;
             color: white;
         }
-        .navbar-brand.abs{
+        {% comment %} .navbar-brand.abs{
             position: absolute;
             text-align :center;
             left: 0;
-            width: 100%;
-        }
-        .navbar {
+        } {% endcomment %}
+        {% comment %} .navbar {
             height: 100px;
-        }
+        } {% endcomment %}
     </style>
 </head>
 
-<body>
+<body style="background-color: #cf4c4d">
     <nav class="navbar sticky-top navbar-expand-lg navbar-light text-center">
         <a class="navbar-brand abs text-center" href="/">
             <img src="{% static "favicon.png" %}" width="65" height="65" class="d-inline-block align-top" alt="">
