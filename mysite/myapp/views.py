@@ -8,6 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.core.mail import EmailMessage, send_mail
 from django.template.loader import get_template
 from django.conf import settings
+from . import scrape
 
 def index(request):
     artists = MyUser.objects.all()
@@ -78,7 +79,10 @@ def contact(request, userId = ''):
 def artistpage(request, user_id):
     artistObject = MyUser.objects.filter(id=user_id)[0]
     static_images = static_image.objects.filter(artist=artistObject)
-    insta_images = Picture.objects.filter(artist=artistObject)
+    # insta_images = Picture.objects.filter(artist=artistObject)
+    insta_images = scrape.get_shared_data(artistObject.instagram_name)
+    insta_images = scrape.extractLinks(insta_images)
+    print(insta_images)
     form = ImageForm
     data = {
         'artist': artistObject,
