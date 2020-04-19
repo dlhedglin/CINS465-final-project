@@ -1,7 +1,6 @@
 from django import forms
-from .models import *
-from . import models
-from custom_user import models
+from .models import static_image, Picture
+from custom_user.models import MyUser
 
 class UploadFileForm(forms.Form):
     title = forms.CharField(max_length=50)
@@ -12,7 +11,7 @@ class ImageForm(forms.ModelForm):
         model = static_image 
         fields = ['img'] 
     def save(self, request):
-        image_instace = models.static_image()
+        image_instace = static_image()
         image_instace.img = self.cleaned_data['img']
         image_instace.artist = request.user
         image_instace.save()
