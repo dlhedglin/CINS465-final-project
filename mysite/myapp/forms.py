@@ -8,7 +8,7 @@ class UploadFileForm(forms.Form):
 
 class ImageForm(forms.ModelForm): 
     class Meta: 
-        model = static_image 
+        model = static_image
         fields = ['img'] 
     def save(self, request):
         image_instace = static_image()
@@ -24,3 +24,5 @@ class ContactForm(forms.Form):
         required = True,
         widget = forms.Textarea
     )
+class changeProfilePictureForm(forms.Form):
+    picture = forms.ImageField()

@@ -13,7 +13,8 @@ urlpatterns = [
     path('logout/', views.logout_user),
     path('contact/', views.contact, name='contact'),
     path('contact/<int:userId>', views.contact),
-    path('remove_image/<int:image_id>', views.remove_image)
+    path('remove_image/<int:image_id>', views.remove_image),
+    path('update-profile-picture/', views.changeProfilePicture),
 ]+ static(
     settings.MEDIA_URL,
     document_root=settings.MEDIA_ROOT

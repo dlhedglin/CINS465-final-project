@@ -2,20 +2,20 @@
 {% block content %}
 {% load static %}
 <div class="container text-center p-5">
-<div class="card">
-<div class="card-header">
-    <h1>Contact Us!</h1>
+    <div class="card">
+        <div class="card-header">
+            <h1>Contact Us!</h1>
+        </div>
+        <div class="card-body">
+            <form role="form" action="" method="POST">
+                {% csrf_token %}
+                {% load crispy_forms_tags %}
+                {{ form | crispy }}
+                <button class="btn btn-primary" type="submit">
+                    Submit
+                </button>
+            </form>
+        </div>
     </div>
-    <div class="card-body">
-    <form role="form" action="" method="POST">
-        {% csrf_token %}
-        {% load crispy_forms_tags %}
-        {{ form | crispy }}
-        <button class="btn btn-primary" type="submit">
-            Submit
-        </button>
-    </form>
-    </div>
-</div>
 </div>
 {% endblock content %}

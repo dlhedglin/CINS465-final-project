@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from myapp.models import Picture, static_image
 from custom_user.admin import UserCreationForm
 from custom_user.models import MyUser
-from .forms import UploadFileForm, ImageForm, ContactForm
+from .forms import UploadFileForm, ImageForm, ContactForm, changeProfilePictureForm
 from django.contrib.auth import authenticate, login, logout
 from django.core.mail import EmailMessage, send_mail
 from django.template.loader import get_template
@@ -86,9 +86,11 @@ def artistpage(request, user_id):
     else:
         insta_images = []
     form = ImageForm
+    profileForm = changeProfilePictureForm
     data = {
         'artist': artistObject,
         'form': form,
+        'profile_form': profileForm,
         'static_images': static_images,
         'insta_images': insta_images,
         'user_id': user_id
@@ -102,6 +104,16 @@ def upload_image(request):
             form.save(request)
     else:
         return redirect('/login')
+    return redirect('/artists/' + str(request.user.id))
+
+def changeProfilePicture(request):
+    if request.method == 'POST' and request.user.is_authenticated:
+        form = changeProfilePictureForm(request.POST, request.FILES)
+        if form.is_valid():
+            print(form.cleaned_data['picture'])
+            user = MyUser.objects.get(pk=request.user.id)
+            user.profile_picture = form.cleaned_data['picture']
+            user.save()
     return redirect('/artists/' + str(request.user.id))
 
 def remove_image(request, image_id):
