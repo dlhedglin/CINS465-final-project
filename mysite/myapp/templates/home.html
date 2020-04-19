@@ -2,61 +2,58 @@
 {% block content %}
 {% load static %}
 <header class="masthead" style="background-image: url('{% static "gradient.jpg" %}')">
-  {% comment %} <div class="container h-100">
-    <div class="row h-100 align-items-center">
-      <div class="col-12 text-center">
-        <h1 class="text-white ">12 Volt Tattoo</h1>
-        <p class="lead text-white">194 E 8th St. Chico, CA 95928</p>
-        <p class="lead text-white">530-592-3074</p>
-        <p class="lead text-white">Mon-Sat: 11am-7pm</p>
-        <p class="lead text-white">Sunday: 12pm-6pm</p>
-      </div>
-    </div>
-  </div> {% endcomment %}
 </header>
 <div class="container-fluid py-5 text-center" style="background-color: #cf4c4d">
-  <h1 class="text-white p-5">GOOD TATTOOS AIN'T CHEAP & CHEAP TATTOOS AIN'T GOOD</h1>
-  <div class="row p-5 justify-content-center" style="background-color: #cf4c4d">
-    <div class="col-sm">
-      <h3 class="text-white">CALL</h3>
-      <p>530-592-3074</p>
-    </div>
-    <div class="col-sm">
-      <h3 class="text-white">HOURS</h3>
-      <p>Mon-Sat: 11am-7pm</p>
-      <p>Sunday: 12pm-6pm</p>
-    </div>
-    <div class="col-sm">
-      <h3 class="text-white">LOCATION</h3>
-      <p>194 E 8th St. Chico, CA 95928</p>
+  <h1 class="text-white p-2">GOOD TATTOOS AIN'T CHEAP &</h1>
+  <h1 class="text-white p-2">CHEAP TATTOOS AIN'T GOOD</h1>
+  <div class="container">
+    <div class="row p-5 justify-content-center" style="background-color: #cf4c4d">
+      <div class="col-sm">
+        <h3 class="text-white">CALL</h3>
+        <p>530-592-3074</p>
+      </div>
+      <div class="col-sm">
+        <h3 class="text-white">HOURS</h3>
+        <p>Mon-Sat: 11am-7pm</p>
+        <p>Sunday: 12pm-6pm</p>
+      </div>
+      <div class="col-sm">
+        <h3 class="text-white">LOCATION</h3>
+        <p>194 E 8th St. Chico, CA 95928</p>
+      </div>
     </div>
   </div>
-  <h1 class="text-white">Artists</h1>
-  <div class="card-columns">
-    {% for artist in artists %}
-    <div class="card border-0 shadow">
+  <div class="container">
+    <h1 class="text-white p-5">Artists</h1>
+    <div class="card-columns p-5">
+      {% for artist in artists %}
+      <a class="style-1" href="artists/{{artist.id}}">
+      <div class="card border-0 shadow">
         {% if artist.profile_picture %}
         <img src="{{artist.profile_picture.url}}" class="card-img-top" alt="...">
         {% endif %}
-      <div class="card-body text-center text-uppercase">
-        <h5 class="card-title mb-0">{{artist.first_name}} {{artist.last_name}}</h5>
-        <hr class="my-4">
-        <a class="btn btn-secondary btn-block" href="artists/{{artist.id}}">View</a>
+        <div class="card-body text-center text-uppercase">
+          <h5 class="card-title mb-0">{{artist.first_name}} {{artist.last_name}}</h5>
+        </div>
       </div>
+      </a>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
 </div>
-<div class="container-fluid text-center py-5" style="background-color: #2a2724">
-  <div class="row justify-content-center">
-    <div class="col-4">
-      <a href="https://www.facebook.com/12VoltTattoo" class="fa fa-facebook shadow btn"></a>
-    </div>
-    <div class="col-4">
-      <a href="https://twitter.com/12volttattoo" class="fa fa-twitter shadow btn"></a>
-    </div>
-    <div class="col-4">
-      <a href="https://www.instagram.com/12volttattoo" class="fa fa-instagram shadow btn"></a>
+<div class="container-fluid text-center p-3" style="background-color: #2a2724">
+  <div class="container">
+    <h1 class="text-white p-3">FOLLOW US</h1>
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <a href="https://www.facebook.com/12VoltTattoo" class="fa fa-facebook shadow btn"></a>
+      </div>
+      <div class="col-4">
+        <a href="https://twitter.com/12volttattoo" class="fa fa-twitter shadow btn"></a>
+      </div>
+      <div class="col-4">
+        <a href="https://www.instagram.com/12volttattoo" class="fa fa-instagram shadow btn"></a>
+      </div>
     </div>
   </div>
 </div>
