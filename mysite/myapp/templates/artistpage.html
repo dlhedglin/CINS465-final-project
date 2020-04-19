@@ -4,7 +4,7 @@
     <div class="container p-5" style="background-color: #cf4c4d">
         {% if artist.profile_picture %}
         <img class="thumb-img shadow" src={{ artist.profile_picture.url }}>
-        {%endif%}
+        {% endif %}
         <h1 class="text-center text-uppercase">{{ artist.first_name }} {{artist.last_name}} </h1>
         <div class="row justify-content-center py-4">
             <div class="col-4">
