@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="container-fluid text-center" style="background-color: #cf4c4d">
-<div class="container" style="background-color: #cf4c4d">
+<div class="container p-5" style="background-color: #cf4c4d">
     {% if artist.profile_picture %}
     <img class="thumb-img shadow" src={{ artist.profile_picture.url }}>
     {% endif %}
@@ -29,6 +29,7 @@
         </div>
     </div>
     {% endif %}
+    {% if static_images %}
     <div class="card-columns py-5">
         {% for img in static_images %}
         <div class="card shadow border-0">
@@ -41,6 +42,8 @@
         </div>
         {% endfor %}
     </div>
+    {% endif %}
+    {% if insta_images %}
     <div class="card-columns">
         {% for img in insta_images %}
         <div class="card shadow border-0">
@@ -48,6 +51,7 @@
         </div>
         {% endfor %}
     </div>
+    {% endif %}
 </div>
 </div>
 

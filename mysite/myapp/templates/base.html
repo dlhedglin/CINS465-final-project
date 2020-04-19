@@ -67,6 +67,22 @@
             background: #dd4b39;
             color: white;
         }
+        .style-1 {
+        color: black;
+        }
+        .style-1:hover, 
+        .style:focus {
+            color: grey;
+        }
+        .style-2 a {
+            color: #9F5F9F;
+            text-decoration: underline;
+        }
+        .style-2 a:hover,
+        .style-2 a:focus {
+            color: #871F78;
+            opacity: 0.8;
+        }
     </style>
 </head>
 
@@ -86,12 +102,12 @@
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="/Contact">Contact Us</a>                    
+                    <a class="nav-link" href="/contact">Contact Us</a>                    
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="https://my.matterport.com/show/?m=XLxoneShs86&utm_source=4&fbclid=IwAR0P8JRdqJvN1VFPsQI62TDdsU6XsDZUIJsEXt2_cY0n9hjmvjP26uXwitQ">View Shop In 3D</a>
                 </li>
-                
+
             </ul>
             <span class="navbar-text">
                 {% if user.is_authenticated %}
