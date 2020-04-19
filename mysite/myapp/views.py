@@ -80,9 +80,11 @@ def artistpage(request, user_id):
     artistObject = MyUser.objects.filter(id=user_id)[0]
     static_images = static_image.objects.filter(artist=artistObject)
     # insta_images = Picture.objects.filter(artist=artistObject)
-    insta_images = scrape.get_shared_data(artistObject.instagram_name)
-    insta_images = scrape.extractLinks(insta_images)
-    print(insta_images)
+    if(artistObject.instagram_name):
+        insta_images = scrape.get_shared_data(artistObject.instagram_name)
+        insta_images = scrape.extractLinks(insta_images)
+    else:
+        insta_images = []
     form = ImageForm
     data = {
         'artist': artistObject,
