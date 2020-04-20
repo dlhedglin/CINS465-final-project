@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from myapp.models import Picture, static_image
+from myapp.models import Picture, static_image, Mails
 from custom_user.admin import UserCreationForm
 from custom_user.models import MyUser
 from .forms import UploadFileForm, ImageForm, ContactForm, changeProfilePictureForm
@@ -17,28 +17,20 @@ def index(request):
     }
     return render(request, 'home.html', context=data)
 
-def contact(request, userId = ''):
-    form_class = ContactForm
+def contact(request, userId = ''):    
     if request.method == 'POST':
-        form = form_class(data=request.POST)
+        form = ContactForm(request.POST, request.FILES)
         if form.is_valid():
-
-            contact_name = request.POST.get(
-                'contact_name',
-                ''
-            )
-            contact_email = request.POST.get(
-                'contact_email',
-                ''
-            )
-            contact_artist = request.POST.get(
-                'contact_artist',
-                ''
-            )
-            
+            print("yes valid")
+            post = form.save(commit=False)
+            post.save()
+            contact_name = request.POST.get('name','')
+            contact_email = request.POST.get('email', '')
+            contact_artist = request.POST.get('artist','')            
             form_content = request.POST.get('content', '')
-            
+            document = request.FILES.get('document')
             artist = MyUser.objects.all()
+            
             for obj in artist:               
                 if str(obj.pk) == contact_artist:
                     artist_email = obj.email
@@ -52,22 +44,25 @@ def contact(request, userId = ''):
             }
             content = template.render(context)
             email_from = settings.EMAIL_HOST_USER
+            email = EmailMessage("Consolation Appointment",
+                    content,
+                    email_from,
+                    [artist_email])
 
-            send_mail(
-                "Consolation Appointment",
-                content,
-                email_from,
-                [artist_email],
-                # Changed the email section to artist was this 'tattootestemail@gmail.com'
-                # headers = {'Reply-To': contact_email},
-            )            
-            return redirect('contact')
+            tempdoc = Mails.objects.all()
+            document = tempdoc[0].document
+            email.attach_file('media/'+str(document))
+            email.send()
+            Mails.objects.all().delete()
+            
+                       
+        return redirect('contact')
     else:
         if userId != '':
             artist = MyUser.objects.filter(id=userId)
             if len(artist) != 0:
                 artist = artist[0]
-                form = ContactForm(initial={'contact_artist': artist})
+                form = ContactForm(initial={'artist': artist})
             else:
                 form = ContactForm
         else:

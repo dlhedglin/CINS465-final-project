@@ -1,5 +1,5 @@
 from django import forms
-from .models import static_image, Picture
+from .models import static_image, Picture, Mails
 from custom_user.models import MyUser
 
 class UploadFileForm(forms.Form):
@@ -16,13 +16,14 @@ class ImageForm(forms.ModelForm):
         image_instace.artist = request.user
         image_instace.save()
         return image_instace
-class ContactForm(forms.Form):
-    contact_artist = forms.ModelChoiceField(queryset = MyUser.objects.all(),required=True)    
-    contact_name = forms.CharField(required=True)
-    contact_email = forms.EmailField(required = True)
-    content = forms.CharField(
-        required = True,
-        widget = forms.Textarea
-    )
+
+class ContactForm(forms.ModelForm):
+    class Meta: 
+        model = Mails
+        fields = ['artist','email','name','content','document'] 
+    content = forms.CharField( widget=forms.Textarea(attrs={'class': "form-control"}))
+    email = forms.EmailField(max_length=200,widget=forms.TextInput(attrs={'class': "form-control",'id': "clientemail"}))
+    name = forms.CharField( widget=forms.TextInput(attrs={'class': "form-control"}))
+
 class changeProfilePictureForm(forms.Form):
     picture = forms.ImageField()
