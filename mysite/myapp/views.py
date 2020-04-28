@@ -17,6 +17,12 @@ def index(request):
     }
     return render(request, 'home.html', context=data)
 
+def aftercare(request):
+    return render(request, 'aftercare.html')
+
+def destiny(request):
+    return render(request, 'destiny.html')
+
 def contact(request, userId = ''):    
     if request.method == 'POST':
         form = ContactForm(request.POST, request.FILES)

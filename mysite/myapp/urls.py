@@ -13,6 +13,8 @@ urlpatterns = [
     path('logout/', views.logout_user),
     path('contact/', views.contact, name='contact'),
     path('contact/<int:userId>', views.contact),
+    path('aftercare/', views.aftercare, name='aftercare'),
+    path('destiny/', views.destiny, name='destiny'),
     path('remove_image/<int:image_id>', views.remove_image),
     path('update-profile-picture/', views.changeProfilePicture),
 ]+ static(
