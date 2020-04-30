@@ -17,6 +17,14 @@ def index(request):
     }
     return render(request, 'home.html', context=data)
 
+def chat(request):
+    return render(request, 'chat.html',{})
+
+def room(request, room_name):
+    return render(request, 'room.html', {
+        'room_name': room_name
+    })
+
 def aftercare(request):
     return render(request, 'aftercare.html')
 

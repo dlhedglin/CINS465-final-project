@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['0.0.0.0', '192.168.1.6', '127.0.0.1', '192.168.68.120']
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
     'myapp.apps.MyappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -72,7 +73,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
-
+ASGI_APPLICATION = 'mysite.routing.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

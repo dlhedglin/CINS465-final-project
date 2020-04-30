@@ -15,6 +15,8 @@ urlpatterns = [
     path('contact/<int:userId>', views.contact),
     path('aftercare/', views.aftercare, name='aftercare'),
     path('destiny/', views.destiny, name='destiny'),
+    path('chat/', views.chat, name='chat'),
+    path('chat/<str:room_name>/', views.room, name='room'),
     path('remove_image/<int:image_id>', views.remove_image),
     path('update-profile-picture/', views.changeProfilePicture),
 ]+ static(
