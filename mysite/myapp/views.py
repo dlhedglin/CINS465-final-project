@@ -18,10 +18,10 @@ def index(request):
     return render(request, 'home.html', context=data)
 
 def chat(request):
-    return render(request, 'chat.html',{})
+    return render(request, 'chat/chat.html',{})
 
 def room(request, room_name):
-    return render(request, 'room.html', {
+    return render(request, 'chat/room.html', {
         'room_name': room_name
     })
 
