@@ -9,6 +9,7 @@
     <title>Chat Rooms</title>
 </head>
 <body>
+    <div class="container text-center p-5">
     What chat room would you like to enter?<br>
     <input id="room-name-input" type="text" size="100"><br>
     <input id="room-name-submit" type="button" value="Enter">
@@ -26,6 +27,7 @@
             window.location.pathname = '/chat/' + roomName + '/';
         };
     </script>
+    </div>
 </body>
 </html>
 {% endblock content %}
