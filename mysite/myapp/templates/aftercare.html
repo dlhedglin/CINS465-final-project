@@ -4,45 +4,75 @@
 <div class="container text-center p-5">
     <div class="card">
         <div class="card-header">
-            <h1>Tattoo Aftercare</h1>            
+            <h1>Tattoo Aftercare</h1>
         </div>
+        <img class="card-img-top" src="{% static "aftercare.jpg" %}" alt="img">
         <div class="card-body">
+            <p>Blaxx Tattoo Lotion - Made by Tattooers for Tattoos</p>
+            <p>Free Shipping!</p>
+            <form target="_blank" method="post" action="https://www.paypal.com/cgi-bin/webscr" alt="PayPal Buy Now">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="undefined_quantity" value="1">
+                <input type="hidden" name="business" value="kacker78@yahoo.com">
+                <input type="hidden" name="item_name" value="Blaxx">
+                <input type="hidden" name="item_number" value="">
+                <input type="hidden" name="amount" value="15.00">
+                <input type="hidden" name="currency_code" value="USD">
+                <input type="hidden" name="shipping" value="0.00">
+                <input type="hidden" name="handling" value="0.00">
+                <input type="hidden" name="no_shipping" value="0">
+                <input type="hidden" name="image_url" value="">
+                <input type="hidden" name="no_note" value="0">
+                <input type="hidden" name="cn" value="Message to Seller">
+                <input type="hidden" name="return" value="">
+                <input type="hidden" name="cancel_return" value="">
+                <input type="hidden" name="bn" value="yahoo-sitesolution">
+                <input type="hidden" name="pal" value="C3MGKKUCCAB9J">
+                <input type="hidden" name="mrb" value="R-5AJ59462NH120001H">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa fa-paypal fa-lg"></i> Checkout with PayPal
+                </button>
+            </form>
+            <br>
             <p class="text-left h4">1. Leave your bandage/wrap on until told by your artist.</p>
-            <p class="text-left">   -While some artists may ask you to leave your bandage on for only an hour, 
-                others may ask you to keep it on for a whole day. 
-                Your tattoo artist knows which length of time is best for you and your ink, 
+            <p class="text-left"> -While some artists may ask you to leave your bandage on for only an hour,
+                others may ask you to keep it on for a whole day.
+                Your tattoo artist knows which length of time is best for you and your ink,
                 so ensure you listen to their advice.</p>
 
             <p class="text-left h4">2. Wash your tattoo well after removing the bandage/wrap. </p>
-            <p class="text-left">   -Wash your tattoo thoroughly (but carefully) using warm water and
-                 an unscented and alcohol-free soap to remove any excess dried blood and plasma.</p>
+            <p class="text-left"> -Wash your tattoo thoroughly (but carefully) using warm water and
+                an unscented and alcohol-free soap to remove any excess dried blood and plasma.</p>
 
             <p class="text-left h4">3. Pat your tattoo dry after cleaning it.</p>
             <p class="text-left">-Use a clean paper towel to dry your tattoo by gently patting the area. Do not rub.</p>
 
             <p class="text-left h4">4. Apply a thin layer of lotion.</p>
-            <p class="text-left">-After cleaning your tattoo, ensure the area is completely dry before applying a very 
-                thin layer of your chosen tattoo aftercare lotion to help moisturize and nourish the area.</p> 
+            <p class="text-left">-After cleaning your tattoo, ensure the area is completely dry before applying a very
+                thin layer of your chosen tattoo aftercare lotion to help moisturize and nourish the area.</p>
 
             <p class="text-left h4">5. Repeat the cleaning process until the tattoo is fully healed.</p>
-            <p class="text-left">-Remember that your tattoo isn’t completely safe from germs and bacteria until it has completely 
+            <p class="text-left">-Remember that your tattoo isn’t completely safe from germs and bacteria until it has
+                completely
                 finished scabbing and peeling. Continue to wash the tattoo until this point (usually 2-4 weeks).</p>
 
             <p class="text-left h4">6. Don’t pick and pull at the flaking/scabbing skin.</p>
-            <p class="text-left">-Picking away at your healing tattoo can delay healing, cause fading, and increase the chances of infection.</p>
+            <p class="text-left">-Picking away at your healing tattoo can delay healing, cause fading, and increase the
+                chances of infection.</p>
 
             <p class="text-left h4">7. Stay away from the sun.</p>
-            <p class="text-left">-Don’t expose your new tattoo to intense sunlight and don’t 
-                apply any sun lotion to the area until it has fully healed.</p> 
+            <p class="text-left">-Don’t expose your new tattoo to intense sunlight and don’t
+                apply any sun lotion to the area until it has fully healed.</p>
 
             <p class="text-left h4">8. Stay away from water.</p>
-            <p class="text-left">-All bodies of water can contain nasty bacteria that can ruin a new tattoo if you’re not careful.
-                 Stick to short showers until your skin has fully healed, and don’t go swimming.</p> 
+            <p class="text-left">-All bodies of water can contain nasty bacteria that can ruin a new tattoo if you’re
+                not careful.
+                Stick to short showers until your skin has fully healed, and don’t go swimming.</p>
 
             <p class="text-left h4">9. Continue to look after your tattoo.</p>
             <p class="text-left">-Once healed, keep your tattoo well protected from the sun and
-                 ensure you continue to moisturize the area regularly. Healthy skin means a healthy-looking tattoo.</p>   
-        </div>    
+                ensure you continue to moisturize the area regularly. Healthy skin means a healthy-looking tattoo.</p>
+        </div>
     </div>
 </div>
 {% endblock content %}
