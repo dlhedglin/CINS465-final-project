@@ -8,18 +8,29 @@
   <h1 class="text-white p-2">CHEAP TATTOOS AIN'T GOOD</h1>
   <div class="container">
     <div class="row p-5 justify-content-center" style="background-color: #cf4c4d">
-      <div class="col-sm">
-        <h3 class="text-white">CALL</h3>
-        <p>530-592-3074</p>
-      </div>
-      <div class="col-sm">
-        <h3 class="text-white">HOURS</h3>
-        <p>Mon-Sat: 11am-7pm</p>
-        <p>Sunday: 12pm-6pm</p>
-      </div>
-      <div class="col-sm">
-        <h3 class="text-white">LOCATION</h3>
-        <p>194 E 8th St. Chico, CA 95928</p>
+      <div class="card-deck">
+        <div class="card">
+          <div class="card-body">
+            <i class="fa fa-phone fa-3x p-3" style="color:black"></i>
+            <h5 class="card-title">CALL</h5>
+            <p class="card-text info">530-592-3074</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <i class="fa fa-clock-o p-3 fa-3x" style="color:black"></i>
+            <h5 class="card-title">HOURS</h5>
+            <p class="card-text">Mon-Sat: 11am-7pm</p>
+            <p class="card-text">Sunday: 12pm-6pm</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <i class="fa fa-map fa-3x p-3" style="color:black"></i>
+            <h5 class="card-title">LOCATION</h5>
+            <p class="card-text">194 E 8th St. Chico, CA 95928</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -28,14 +39,14 @@
     <div class="card-columns p-5">
       {% for artist in artists %}
       <a class="style-1" href="artists/{{artist.id}}">
-      <div class="card border-0 shadow">
-        {% if artist.profile_picture %}
-        <img src="{{artist.profile_picture.url}}" class="card-img-top" alt="...">
-        {% endif %}
-        <div class="card-body text-center text-uppercase">
-          <h5 class="card-title mb-0">{{artist.first_name}} {{artist.last_name}}</h5>
+        <div class="card border-0 shadow">
+          {% if artist.profile_picture %}
+          <img src="{{artist.profile_picture.url}}" class="card-img-top" alt="...">
+          {% endif %}
+          <div class="card-body text-center text-uppercase">
+            <h5 class="card-title mb-0">{{artist.first_name}} {{artist.last_name}}</h5>
+          </div>
         </div>
-      </div>
       </a>
       {% endfor %}
     </div>

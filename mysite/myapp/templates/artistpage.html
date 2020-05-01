@@ -5,15 +5,13 @@
         {% if artist.profile_picture %}
         <img class="thumb-img shadow" src={{ artist.profile_picture.url }}>
         {% endif %}
-        <h1 class="text-center text-uppercase">{{ artist.first_name }} {{artist.last_name}} </h1>
-        <div class="row justify-content-center py-4">
-            <div class="col-4">
-                <a href="https://www.instagram.com/{{ artist.instagram_name }}" class="fa fa-instagram shadow btn"></a>
-            </div>
-            <div class="col-4">
-                <a href="/contact/{{ artist.id }}" class="fa fa-envelope shadow btn"></a>
-            </div>
-        </div>
+        <h1 class="text-center p-5 text-uppercase">{{ artist.first_name }} {{artist.last_name}} </h1>
+        <ul class="horizontal">
+            <li class="horizontal"><a href="/contact/{{ artist.id }}"><i class="fa fa-envelope fa-4x"></i></a>
+            </li>
+            <li class="horizontal"><a href="https://www.instagram.com/{{ artist.instagram_name }}"><i
+                        class="fa fa-instagram fa-4x"></i></a></li>
+        </ul>
         {% if user.is_authenticated and user_id == user.id %}
         <div class="card text-center">
             <div class="card-header">

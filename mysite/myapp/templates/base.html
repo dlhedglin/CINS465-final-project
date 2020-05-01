@@ -41,15 +41,16 @@
         }
 
         .fa {
-            padding: 20px;
-            font-size: 60px;
-            width: 100px;
-            height: 100px;
-            text-align: center;
-            border-radius: 50%;
+            {% comment %} padding: 20px; {% endcomment %}
+            {% comment %} font-size: 60px; {% endcomment %}
+            {% comment %} width: 100px; {% endcomment %}
+            {% comment %} height: 100px; {% endcomment %}
+            {% comment %} text-align: center; {% endcomment %}
+            {% comment %} border-radius: 50%; {% endcomment %}
+            color: white;
         }
 
-        .fa-facebook {
+        {% comment %} .fa-facebook {
             background: #3B5998;
             color: white;
         }
@@ -66,7 +67,7 @@
         .fa-envelope {
             background: #dd4b39;
             color: white;
-        }
+        } {% endcomment %}
         .style-1 {
         color: black;
         }
@@ -82,6 +83,18 @@
         .style-2 a:focus {
             color: #871F78;
             opacity: 0.8;
+        }
+        ul.horizontal {
+            list-style-type: none;
+            margin: 0 auto;
+            padding: 0;
+            overflow: hidden;
+            display: table;
+        } 
+        li.horizontal {
+            float: left;
+            padding: 25px;
+            color: white;
         }
     </style>
 </head>
@@ -144,8 +157,13 @@
 </body>
 <div class="container-fluid text-center p-3" style="background-color: #2a2724">
     <div class="container">
-      <h1 class="text-white p-3">FOLLOW US</h1>
-      <div class="row justify-content-center">
+    <ul class="horizontal">
+        <li class="horizontal"><a href="https://twitter.com/12volttattoo"><i class="fa fa-twitter fa-4x"></i></a></li>
+        <li class="horizontal"><a href="https://www.instagram.com/12volttattoo"><i class="fa fa-instagram fa-4x"></i></a></li>
+        <li class="horizontal"><a href="https://www.facebook.com/12VoltTattoo"><i class="fa fa-facebook fa-4x"></i></a></li> 
+    </ul>
+      {% comment %} <h1 class="text-white p-3">FOLLOW US</h1> {% endcomment %}
+      {% comment %} <div class="row justify-content-center">
         <div class="col-4">
           <a href="https://www.facebook.com/12VoltTattoo" class="fa fa-facebook shadow btn"></a>
         </div>
@@ -155,7 +173,7 @@
         <div class="col-4">
           <a href="https://www.instagram.com/12volttattoo" class="fa fa-instagram shadow btn"></a>
         </div>
-      </div>
+      </div> {% endcomment %}
     </div>
   </div>
 </html>
