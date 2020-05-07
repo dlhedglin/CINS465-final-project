@@ -9,6 +9,7 @@ from django.core.mail import EmailMessage, send_mail
 from django.template.loader import get_template
 from django.conf import settings
 from . import scrape
+from mysite.settings import BASE_DIR, MEDIA_URL
 
 def index(request):
     artists = MyUser.objects.all()
@@ -64,8 +65,9 @@ def contact(request, userId = ''):
                     [artist_email])
 
             tempdoc = Mails.objects.all()
+            print(BASE_DIR + MEDIA_URL)
             document = tempdoc[0].document
-            email.attach_file('media/'+str(document))
+            email.attach_file(BASE_DIR + MEDIA_URL + str(document))
             email.send()
             Mails.objects.all().delete()
             
@@ -136,8 +138,6 @@ def remove_image(request, image_id):
                 return HttpResponse('You cannot remove another users image')
     else:
         return redirect('/')
-
-
 
 def logout_user(request):
     logout(request)
