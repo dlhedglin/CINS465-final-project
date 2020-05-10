@@ -63,16 +63,16 @@ def contact(request, userId = ''):
                     content,
                     email_from,
                     [artist_email])
-
-            tempdoc = Mails.objects.all()
-            print(BASE_DIR + MEDIA_URL)
-            document = tempdoc[0].document
-            email.attach_file(BASE_DIR + MEDIA_URL + str(document))
+            if document:
+                tempdoc = Mails.objects.all()
+                print(BASE_DIR + MEDIA_URL)
+                document = tempdoc[0].document
+                email.attach_file(BASE_DIR + MEDIA_URL + str(document))
             email.send()
             Mails.objects.all().delete()
             
                        
-        return redirect('contact')
+        return redirect('/')
     else:
         if userId != '':
             artist = MyUser.objects.filter(id=userId)

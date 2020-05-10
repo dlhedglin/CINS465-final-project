@@ -20,6 +20,7 @@ class Mails(models.Model):
     email =     models.EmailField(null=True) 
     name =   models.CharField(max_length=1000, null=True)
     content = models.CharField(max_length=20000, null=True)
-    document = models.FileField(upload_to='images/', null=True)
+    document = models.FileField(upload_to='images/', null=True, blank=True)
+    REQUIRED_FIELDS = ['artist', 'email', 'name', 'content']
     def __str__(self):
         return self.email  
