@@ -18,7 +18,7 @@ Django==3.0.2
 django-cleanup==4.0.0
 django-crispy-forms==1.9.0
 django-filter==2.2.0
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 EZGmail==0.0.8
 google-api-core==1.16.0
 google-api-python-client==1.8.0
